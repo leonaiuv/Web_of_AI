@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONO - 精致时计</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <h2>CHRONO</h2>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">CHRONO</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link">首页</a></li>
+                <li><a href="#collection" class="nav-link">系列</a></li>
+                <li><a href="#featured" class="nav-link">特色</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
+            <a href="#" class="icon-link"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+            <a href="#" class="icon-link"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">优雅时光<br>尽在掌握</h1>
+                <p class="hero-subtitle">探索CHRONO精湛工艺与现代设计的完美融合</p>
+                <div class="hero-cta">
+                    <a href="#collection" class="btn btn-primary">探索系列</a>
+                    <a href="#" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="watch-showcase">
+                    <div class="watch-image">
+                        <img src="images/hero-watch.png" alt="CHRONO签名款手表" id="featured-watch">
+                    </div>
+                    <div class="watch-shadow"></div>
+                </div>
+                <div class="decorative-circle"></div>
+            </div>
+        </section>
+
+        <section id="collection" class="collection">
+            <div class="section-header">
+                <h2>精选系列</h2>
+                <p>每一款都是时间的艺术品</p>
+            </div>
+            <div class="watch-slider">
+                <div class="watch-card" data-color="#f5f5f5">
+                    <div class="card-visual">
+                        <img src="images/watch1.png" alt="经典系列手表">
+                        <div class="hover-effect"></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>晨曦 Classic</h3>
+                        <p>简约设计，永恒经典</p>
+                        <span class="price">¥3,899</span>
+                        <a href="#" class="btn-add-cart">加入购物车</a>
+                    </div>
+                </div>
+                <div class="watch-card" data-color="#f8f4e9">
+                    <div class="card-visual">
+                        <img src="images/watch2.png" alt="轻奢系列手表">
+                        <div class="hover-effect"></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>星河 Celestial</h3>
+                        <p>灵感源自浩瀚星空</p>
+                        <span class="price">¥4,299</span>
+                        <a href="#" class="btn-add-cart">加入购物车</a>
+                    </div>
+                </div>
+                <div class="watch-card" data-color="#eef2f7">
+                    <div class="card-visual">
+                        <img src="images/watch3.png" alt="运动系列手表">
+                        <div class="hover-effect"></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>破晓 Dynamic</h3>
+                        <p>为冒险者设计</p>
+                        <span class="price">¥5,199</span>
+                        <a href="#" class="btn-add-cart">加入购物车</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-pagination">
+                    <span class="pagination-dot active"></span>
+                    <span class="pagination-dot"></span>
+                    <span class="pagination-dot"></span>
+                </div>
+                <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="featured" class="featured">
+            <div class="featured-watch-display">
+                <div class="display-visuals">
+                    <div class="watch-rotate-view">
+                        <div class="watch-rotate-container">
+                            <img src="images/watch-rotate1.png" alt="手表360度展示" class="rotate-view">
+                        </div>
+                    </div>
+                    <div class="watch-details">
+                        <div class="detail-point" style="top: 25%; left: 15%;">
+                            <div class="point-dot"></div>
+                            <div class="point-info">精钢表壳</div>
+                        </div>
+                        <div class="detail-point" style="top: 45%; left: 85%;">
+                            <div class="point-dot"></div>
+                            <div class="point-info">蓝宝石玻璃</div>
+                        </div>
+                        <div class="detail-point" style="top: 70%; left: 30%;">
+                            <div class="point-dot"></div>
+                            <div class="point-info">意大利真皮表带</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="display-info">
+                    <h2>工艺精湛</h2>
+                    <p>每一个细节都彰显非凡品质，每一款腕表都凝聚百年制表工艺与现代科技的完美融合。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 瑞士机芯，精准走时</li>
+                        <li><i class="fas fa-check"></i> 防水深度100米</li>
+                        <li><i class="fas fa-check"></i> 超长续航，典雅设计</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">探索工艺</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="about-content">
+                <h2>关于CHRONO</h2>
+                <p>源自2023年，CHRONO致力于创造兼具艺术性与功能性的时计作品。我们相信，腕表不仅是计时工具，更是个人风格与品味的象征。</p>
+                <a href="#" class="btn btn-secondary">品牌故事</a>
+            </div>
+            <div class="about-visual">
+                <div class="brand-story-image">
+                    <img src="images/brand-story.jpg" alt="品牌故事">
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="newsletter-container">
+                <h2>订阅信息</h2>
+                <p>了解最新产品与独家优惠</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="您的邮箱地址" required>
+                    <button type="submit" class="btn btn-primary">订阅</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>CHRONO</h2>
+                <p>精致时计，尽在掌握</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h3>购物</h3>
+                    <ul>
+                        <li><a href="#">男士手表</a></li>
+                        <li><a href="#">女士手表</a></li>
+                        <li><a href="#">限量系列</a></li>
+                        <li><a href="#">配件</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">品牌故事</a></li>
+                        <li><a href="#">工艺制作</a></li>
+                        <li><a href="#">可持续发展</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>客户服务</h3>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">配送信息</a></li>
+                        <li><a href="#">退换政策</a></li>
+                        <li><a href="#">保修服务</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h3>关注我们</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-wechat"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 CHRONO 精致时计. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
