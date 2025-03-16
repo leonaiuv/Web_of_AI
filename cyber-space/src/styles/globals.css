@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans;
+    background: linear-gradient(to bottom, #0a0a0a, #121212);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-light;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  .cyber-btn {
+    @apply relative px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white bg-transparent border border-primary/50 transition-all duration-300 overflow-hidden;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+  }
+
+  .cyber-btn:before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-primary/10 transform -skew-x-12 -translate-x-full transition-transform duration-300;
+  }
+
+  .cyber-btn:hover:before {
+    @apply translate-x-0;
+  }
+
+  .cyber-btn:hover {
+    @apply border-primary text-primary shadow-lg;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  }
+
+  .cyber-card {
+    @apply relative bg-dark-light/80 backdrop-blur-lg border border-primary/20 rounded-md overflow-hidden;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.1);
+  }
+
+  .cyber-card:hover {
+    @apply border-primary/40;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.2);
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .cyber-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .cyber-glow {
+    text-shadow: 0 0 5px rgba(0, 245, 255, 0.7), 0 0 10px rgba(0, 245, 255, 0.5);
+  }
+} 
