@@ -16,7 +16,7 @@ import Link from 'next/link';
 // 导航项配置
 const navItems = [
   { name: '首页', href: '#home' },
-  { name: '服务', href: '#services' },
+  { name: 'AI导航', href: '#services' },
   { name: '关于我们', href: '#about' },
   { name: '作品', href: '#portfolio' },
   { name: '联系我们', href: '#contact' },
@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            未来视觉
+            OpenLab
           </motion.div>
         </Link>
 
@@ -179,7 +179,7 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              未来视觉
+              OpenLab
             </motion.div>
           </Link>
 

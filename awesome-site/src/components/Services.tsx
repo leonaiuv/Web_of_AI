@@ -102,9 +102,9 @@ const Services: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">我们的服务</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">AI导航服务</h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            我们提供全方位的数字设计和开发服务，帮助您的品牌在数字世界中脱颖而出
+            这里提供一系列实用的AI应用导航，帮助您快速找到所需资源。
           </p>
         </motion.div>
 
