@@ -28,13 +28,13 @@ const Hero: React.FC = () => {
             }}
           >
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-              <span className="gradient-text">未来视觉</span>
+              <span className="gradient-text">李沐的AI空间</span>
               <br />
-              <span className="text-white">引领创新设计</span>
+              <span className="text-white">探索和普及AI应用</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
-              我们的团队专注于创建震撼人心的数字体验，将创意与技术完美融合
+              AI一定能重构世界！收藏这个页面！一起探索AI！
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                了解更多
+                AI 导航
               </motion.button>
               
               <motion.button
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                联系我们
+                开源项目
               </motion.button>
             </div>
           </motion.div>
@@ -86,15 +86,21 @@ const Hero: React.FC = () => {
                 
                 <div className="relative h-full w-full p-6 flex flex-col items-center justify-center">
                   <motion.div
-                    className="w-24 h-24 mb-4 rounded-full bg-white/10 flex items-center justify-center"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="w-24 h-24 mb-4 rounded-full bg-white/10 flex items-center justify-center" 
+                    /* animate={{ rotate: 360 }}  移除头像旋转*/
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }} 
                   >
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-blue-500" />
+                    <img 
+                  src="/images/heroimg/webtouxiang.jpg" // 图片路径，建议存放在public目录下
+                  alt="个人头像"
+                  className="w-full h-full object-cover rounded-full"
+                  width={96}
+                  height={96}
+                />
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold text-white mb-2">未来视觉</h3>
-                  <p className="text-sm text-center text-white/70">创新·设计·体验</p>
+                  <h3 className="text-xl font-bold text-white mb-2">我是李沐</h3>
+                  <p className="text-sm text-center text-white/70">和我一起探索人机协作新范式</p>
                   
                   {/* 装饰线条 */}
                   <div className="absolute bottom-6 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
