@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
-              AI一定能重构世界！收藏这个页面！一起探索AI！
+              开发中...
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
@@ -99,12 +99,15 @@ const Hero: React.FC = () => {
                 />
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold text-white mb-2">我是李沐</h3>
+                  
+                  <h3 className="text-xl font-bold text-white mb-2">李沐</h3>
                   <p className="text-sm text-center text-white/70">和我一起探索人机协作新范式</p>
                   
                   {/* 装饰线条 */}
                   <div className="absolute bottom-6 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                 </div>
+
+                
               </div>
             </motion.div>
             
