@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-black text-white font-sans;
+    background: linear-gradient(to bottom, #000000, #1D1433);
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-all duration-300 rounded-md focus:outline-none;
+  }
+  
+  .btn-primary {
+    @apply bg-neural-500 text-white hover:bg-neural-600;
+    box-shadow: 0 0 15px rgba(153, 102, 255, 0.5);
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-display font-bold mb-6 text-center;
+    background: linear-gradient(90deg, #9966FF, #FF66AF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .neural-card {
+    @apply p-6 rounded-xl backdrop-blur-md;
+    background: rgba(20, 20, 40, 0.5);
+    border: 1px solid rgba(153, 102, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .synapse-glow {
+    position: relative;
+  }
+  
+  .synapse-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    z-index: -1;
+    @apply animate-glow;
+    box-shadow: 0 0 25px rgba(153, 102, 255, 0.6);
+  }
+} 
