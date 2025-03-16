@@ -90,9 +90,9 @@ const About: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">关于我们</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">关于A-A-E-C</h2>
           <p className="text-lg text-white/70 max-w-3xl mx-auto">
-            未来视觉是一家充满激情的创意科技工作室，专注于创造令人惊叹的数字体验。我们将艺术创意与尖端技术相结合，为客户打造独特的视觉故事。
+            我们致力于探索AI应用，为AI爱好者提供讨论和交流平台。
           </p>
         </motion.div>
 

@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            OpenLab
+            A-A-E-C
           </motion.div>
         </Link>
 
@@ -179,7 +179,7 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              OpenLab
+              A-A-E-C
             </motion.div>
           </Link>
 
