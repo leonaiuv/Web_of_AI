@@ -45,7 +45,7 @@ export default function Home() {
 
       <footer className="py-8 text-center text-white/60">
         <div className="container mx-auto">
-          <p>© {new Date().getFullYear()} 未来视觉. 保留所有权利.</p>
+          <p>© {new Date().getFullYear()} 李沐的AI空间. 保留所有权利.</p>
         </div>
       </footer>
     </>
