@@ -28,9 +28,9 @@ const Hero: React.FC = () => {
             }}
           >
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-              <span className="gradient-text">李沐的AI空间</span>
+              <span className="gradient-text">AI Application Exploration Community</span>
               <br />
-              <span className="text-white">探索和普及AI应用</span>
+              <span className="text-white">AI应用探索社区</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
