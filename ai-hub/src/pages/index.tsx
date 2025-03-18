@@ -50,7 +50,7 @@ export default function Home() {
       {/* 加载动画 */}
       <div className={`fixed inset-0 z-50 flex items-center justify-center bg-dark transition-opacity duration-500 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <div className="text-4xl font-mono font-bold ai-text ai-glow animate-pulse">
-          AI空间<span className="animate-ping">_</span>
+          AI SPACE<span className="animate-ping">_</span>
         </div>
       </div>
     </div>

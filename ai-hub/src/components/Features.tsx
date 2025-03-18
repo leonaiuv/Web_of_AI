@@ -69,7 +69,7 @@ const Features = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            探索<span className="ai-text">AI空间</span>的核心功能
+            探索<span className="ai-text">AI Space</span>的核心秘密
           </motion.h2>
           <motion.p 
             className="text-lg text-gray-300 max-w-3xl mx-auto"
@@ -78,7 +78,7 @@ const Features = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            我们精心打造的平台让您轻松发现、评估和分享最新最酷的AI应用
+            顶级开发者精心打造的平台让您轻松发现、评估和分享最新最酷的AI应用
           </motion.p>
         </div>
         
