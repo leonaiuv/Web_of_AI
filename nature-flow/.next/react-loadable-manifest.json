@@ -1,12 +1,12 @@
 {
-  "pages\\index.tsx -> @/components/CursorEffect": {
-    "id": "pages\\index.tsx -> @/components/CursorEffect",
+  "pages/index.tsx -> @/components/CursorEffect": {
+    "id": "pages/index.tsx -> @/components/CursorEffect",
     "files": [
       "static/chunks/src_components_CursorEffect_tsx.js"
     ]
   },
-  "pages\\index.tsx -> @/components/NatureBackground": {
-    "id": "pages\\index.tsx -> @/components/NatureBackground",
+  "pages/index.tsx -> @/components/NatureBackground": {
+    "id": "pages/index.tsx -> @/components/NatureBackground",
     "files": [
       "static/chunks/src_components_NatureBackground_tsx.js"
     ]
