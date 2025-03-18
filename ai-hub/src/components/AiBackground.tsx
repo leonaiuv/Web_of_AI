@@ -1,201 +1,118 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { useFrame, useThree } from '@react-three/fiber';
-import { Canvas, extend } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 
-// 神经网络效果元素
-const NeuralNetwork = () => {
-  const points = useRef<THREE.Points>(null);
-  const connectionsMesh = useRef<THREE.LineSegments>(null);
-  
-  const particleCount = 200;
-  const maxConnections = 1000;
-  const connectionDistance = 1.5;
-  
-  // 初始化粒子位置
-  const particlePositions = useRef(new Float32Array(particleCount * 3));
-  const particleData = useRef(new Float32Array(particleCount * 3));
-  
-  // 初始化连接数据
-  const linePositions = useRef(new Float32Array(maxConnections * 6));
-  const lineColors = useRef(new Float32Array(maxConnections * 6));
+const CyberBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // 随机生成粒子位置
-    for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3;
-      particlePositions.current[i3] = (Math.random() - 0.5) * 10;
-      particlePositions.current[i3 + 1] = (Math.random() - 0.5) * 10;
-      particlePositions.current[i3 + 2] = (Math.random() - 0.5) * 10;
-      
-      // 粒子移动数据
-      particleData.current[i3] = Math.random() * 0.01 - 0.005;
-      particleData.current[i3 + 1] = Math.random() * 0.01 - 0.005;
-      particleData.current[i3 + 2] = Math.random() * 0.01 - 0.005;
+    if (!containerRef.current) return;
+    
+    // 创建场景
+    const scene = new THREE.Scene();
+    
+    // 创建相机
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 5;
+    
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    containerRef.current.appendChild(renderer.domElement);
+    
+    // 创建网格
+    const gridSize = 20;
+    const gridDivisions = 20;
+    const gridColor1 = new THREE.Color(0x00f5ff); // 主色调
+    const gridColor2 = new THREE.Color(0xff00e4); // 辅色调
+    
+    // 创建水平网格
+    const gridHelper1 = new THREE.GridHelper(gridSize, gridDivisions, gridColor1, gridColor1);
+    gridHelper1.position.y = -2;
+    scene.add(gridHelper1);
+    
+    // 创建垂直网格
+    const gridHelper2 = new THREE.GridHelper(gridSize, gridDivisions, gridColor2, gridColor2);
+    gridHelper2.position.y = -2;
+    gridHelper2.rotation.x = Math.PI / 2;
+    scene.add(gridHelper2);
+    
+    // 创建粒子
+    const particlesCount = 500;
+    const positions = new Float32Array(particlesCount * 3);
+    
+    for (let i = 0; i < particlesCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
     }
     
-    // 初始化连接颜色
-    for (let i = 0; i < maxConnections; i++) {
-      const i6 = i * 6;
-      lineColors.current[i6] = 0.2;
-      lineColors.current[i6 + 1] = 0.5;
-      lineColors.current[i6 + 2] = 1.0;
+    const particlesGeometry = new THREE.BufferGeometry();
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+      color: 0x00f5ff,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending
+    });
+    
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+    
+    // 处理窗口大小变化
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    // 动画循环
+    const animate = () => {
+      requestAnimationFrame(animate);
       
-      lineColors.current[i6 + 3] = 0.2;
-      lineColors.current[i6 + 4] = 0.5;
-      lineColors.current[i6 + 5] = 1.0;
-    }
+      // 旋转网格
+      gridHelper1.rotation.z += 0.001;
+      gridHelper2.rotation.z += 0.001;
+      
+      // 旋转粒子
+      particles.rotation.y += 0.0005;
+      
+      renderer.render(scene, camera);
+    };
+    
+    animate();
+    
+    // 清理函数
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      containerRef.current?.removeChild(renderer.domElement);
+      scene.remove(gridHelper1);
+      scene.remove(gridHelper2);
+      scene.remove(particles);
+      particlesGeometry.dispose();
+      particlesMaterial.dispose();
+      renderer.dispose();
+    };
   }, []);
   
-  useFrame((state) => {
-    if (!points.current || !connectionsMesh.current) return;
-    
-    const time = state.clock.getElapsedTime();
-    
-    // 更新粒子位置
-    const positions = points.current.geometry.attributes.position.array as Float32Array;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3;
-      
-      positions[i3] += particleData.current[i3];
-      positions[i3 + 1] += particleData.current[i3 + 1];
-      positions[i3 + 2] += particleData.current[i3 + 2];
-      
-      // 检查边界
-      if (positions[i3] < -5 || positions[i3] > 5) particleData.current[i3] *= -1;
-      if (positions[i3 + 1] < -5 || positions[i3 + 1] > 5) particleData.current[i3 + 1] *= -1;
-      if (positions[i3 + 2] < -5 || positions[i3 + 2] > 5) particleData.current[i3 + 2] *= -1;
-    }
-    
-    points.current.geometry.attributes.position.needsUpdate = true;
-    
-    // 更新连接
-    let connectionCount = 0;
-    const linePositions = connectionsMesh.current.geometry.attributes.position.array as Float32Array;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3;
-      
-      for (let j = i + 1; j < particleCount; j++) {
-        const j3 = j * 3;
-        
-        // 计算距离
-        const dx = positions[i3] - positions[j3];
-        const dy = positions[i3 + 1] - positions[j3 + 1];
-        const dz = positions[i3 + 2] - positions[j3 + 2];
-        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        
-        if (distance < connectionDistance && connectionCount < maxConnections) {
-          const c6 = connectionCount * 6;
-          
-          // 从i到j的线
-          linePositions[c6] = positions[i3];
-          linePositions[c6 + 1] = positions[i3 + 1];
-          linePositions[c6 + 2] = positions[i3 + 2];
-          
-          linePositions[c6 + 3] = positions[j3];
-          linePositions[c6 + 4] = positions[j3 + 1];
-          linePositions[c6 + 5] = positions[j3 + 2];
-          
-          connectionCount++;
-        }
-      }
-    }
-    
-    connectionsMesh.current.geometry.attributes.position.needsUpdate = true;
-    connectionsMesh.current.geometry.setDrawRange(0, connectionCount * 2);
-    
-    // 缓慢旋转
-    points.current.rotation.y = time * 0.05;
-    connectionsMesh.current.rotation.y = time * 0.05;
-  });
-  
   return (
-    <>
-      <points ref={points}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={particleCount}
-            array={particlePositions.current}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.1}
-          color="#0ab5ff"
-          transparent
-          blending={THREE.AdditiveBlending}
-          opacity={0.8}
-        />
-      </points>
-      
-      <lineSegments ref={connectionsMesh}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={maxConnections * 2}
-            array={linePositions.current}
-            itemSize={3}
-          />
-          <bufferAttribute
-            attach="attributes-color"
-            count={maxConnections * 2}
-            array={lineColors.current}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial
-          vertexColors
-          transparent
-          blending={THREE.AdditiveBlending}
-          opacity={0.3}
-        />
-      </lineSegments>
-    </>
+    <div 
+      ref={containerRef} 
+      className="fixed inset-0 -z-10 bg-gradient-to-b from-dark to-dark-light"
+    />
   );
 };
 
-// 漂浮球体
-const FloatingSphere = () => {
-  return (
-    <Sphere args={[2, 64, 64]} position={[0, 0, 0]}>
-      <MeshDistortMaterial
-        color="#9834ff"
-        attach="material"
-        distort={0.5}
-        speed={4}
-        roughness={0}
-        metalness={0.5}
-        opacity={0.6}
-        transparent
-      />
-    </Sphere>
-  );
-};
-
-const Scene = () => {
-  return (
-    <>
-      <ambientLight intensity={0.3} />
-      <directionalLight intensity={0.5} position={[5, 5, 5]} />
-      <NeuralNetwork />
-      <FloatingSphere />
-      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-    </>
-  );
-};
-
-const AiBackground = () => {
-  return (
-    <div className="fixed inset-0 -z-10 bg-gradient-to-b from-dark to-dark-light">
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-        <Scene />
-      </Canvas>
-    </div>
-  );
-};
-
-export default AiBackground; 
+export default CyberBackground; 
