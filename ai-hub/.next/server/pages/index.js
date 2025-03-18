@@ -110,28 +110,6 @@ eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__
 
 /***/ }),
 
-/***/ "@react-three/drei":
-/*!************************************!*\
-  !*** external "@react-three/drei" ***!
-  \************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("@react-three/drei");
-
-/***/ }),
-
-/***/ "@react-three/fiber":
-/*!*************************************!*\
-  !*** external "@react-three/fiber" ***!
-  \*************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("@react-three/fiber");
-
-/***/ }),
-
 /***/ "next/dist/compiled/next-server/pages.runtime.dev.js":
 /*!**********************************************************************!*\
   !*** external "next/dist/compiled/next-server/pages.runtime.dev.js" ***!
