@@ -32,15 +32,15 @@ const Hero = () => {
               
               <div className="mt-12 grid grid-cols-3 gap-6">
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold ai-text">1000+</h3>
+                  <h3 className="text-4xl font-bold ai-text">开发中..</h3>
                   <p className="text-gray-400 mt-2">AI应用</p>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold ai-text">250K+</h3>
+                  <h3 className="text-4xl font-bold ai-text">开发中..</h3>
                   <p className="text-gray-400 mt-2">活跃用户</p>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold ai-text">50+</h3>
+                  <h3 className="text-4xl font-bold ai-text">开发中..</h3>
                   <p className="text-gray-400 mt-2">AI类别</p>
                 </div>
               </div>

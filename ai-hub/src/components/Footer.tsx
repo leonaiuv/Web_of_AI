@@ -96,7 +96,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 pt-8 mt-8 text-sm text-gray-500">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>© 2023 AI空间. 保留所有权利.</p>
+            <p>© 2025 AI空间. 保留所有权利.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-white transition-colors">隐私政策</a>
               <a href="#" className="hover:text-white transition-colors">使用条款</a>
