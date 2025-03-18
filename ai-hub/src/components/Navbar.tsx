@@ -45,7 +45,7 @@ const Navbar = () => {
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
               <span className="text-white font-bold text-xl">AI</span>
             </div>
-            <span className="text-2xl font-bold ai-text">AI空间</span>
+            <span className="text-2xl font-bold ai-text">SPACE</span>
           </Link>
           
           {/* 桌面导航栏 */}
