@@ -1,0 +1,22 @@
+.sidebar {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+}
+
+.ant-layout-sider-children {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-menu-inline .ant-menu-item {
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.ant-menu-item:hover {
+  background-color: rgba(24, 144, 255, 0.1);
+} 

@@ -1,0 +1,47 @@
+.site-layout-background {
+  background: #fff;
+  min-height: 280px;
+  padding: 24px;
+  border-radius: 2px;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f2f5;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .site-layout-background {
+    padding: 16px;
+  }
+} 

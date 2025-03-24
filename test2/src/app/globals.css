@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 30, 20, 60;
+  --primary-color: 120, 90, 255;
+  --secondary-color: 255, 50, 120;
+  --accent-color: 0, 255, 170;
+}
+
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+      to bottom right,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 5px rgba(var(--accent-color), 0.7),
+                 0 0 10px rgba(var(--accent-color), 0.5),
+                 0 0 15px rgba(var(--accent-color), 0.3);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 15px rgba(var(--primary-color), 0.5),
+                0 0 30px rgba(var(--primary-color), 0.3);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 20, 60, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary-color), 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--secondary-color), 0.6);
+}

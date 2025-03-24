@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创意作品集</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>Portfolio</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">首页</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- 主页部分 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="创意无限">创意无限</h1>
+            <p>设计 • 开发 • 创新</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn primary-btn">查看作品</a>
+                <a href="#contact" class="btn secondary-btn">联系我</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <div class="img-container">
+                        <div class="img-bg"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>创意设计师 & 开发者</h3>
+                    <p>我是一名充满热情的设计师和开发者，致力于创造独特的数字体验。通过结合创新设计和精湛技术，我打造出既美观又实用的产品。</p>
+                    <p>我相信设计的力量可以改变用户体验，并且不断追求创新和完美。每个项目都是我表达创意和解决问题的机会。</p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i class="fas fa-award"></i>
+                            <span>5年经验</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>50+项目</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>30+客户</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">我的项目</h2>
+            <div class="project-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="web">网页设计</button>
+                <button class="filter-btn" data-filter="app">应用开发</button>
+                <button class="filter-btn" data-filter="design">UI/UX设计</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="web">
+                    <div class="project-img">
+                        <img src="https://source.unsplash.com/random/600x400?website" alt="网页项目">
+                    </div>
+                    <div class="project-content">
+                        <h3>创意网站设计</h3>
+                        <p>现代响应式网站设计与开发</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="app">
+                    <div class="project-img">
+                        <img src="https://source.unsplash.com/random/600x400?app" alt="应用项目">
+                    </div>
+                    <div class="project-content">
+                        <h3>移动应用开发</h3>
+                        <p>为客户开发的创新移动应用</p>
+                        <div class="project-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="design">
+                    <div class="project-img">
+                        <img src="https://source.unsplash.com/random/600x400?design" alt="设计项目">
+                    </div>
+                    <div class="project-content">
+                        <h3>UI/UX 设计系统</h3>
+                        <p>全面的界面设计系统与组件库</p>
+                        <div class="project-tags">
+                            <span>Figma</span>
+                            <span>UI设计</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能部分 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">我的技能</h2>
+            <div class="skills-content">
+                <div class="skills-left">
+                    <h3>设计技能</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>UI/UX设计</p>
+                            <p class="percent">90%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>网页设计</p>
+                            <p class="percent">85%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>平面设计</p>
+                            <p class="percent">75%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-right">
+                    <h3>开发技能</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>HTML/CSS</p>
+                            <p class="percent">95%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>JavaScript</p>
+                            <p class="percent">85%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <p>React</p>
+                            <p class="percent">80%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>邮箱</h3>
+                            <p>contact@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>电话</h3>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>地址</h3>
+                            <p>上海市浦东新区</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="您的邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="主题">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="您的信息" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">发送信息</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 创意作品集. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
