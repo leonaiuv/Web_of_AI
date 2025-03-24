@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RoadmapItem from './RoadmapItem';
 
 const quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
-const years = ['2024', '2025', '2026'];
 
-export default function Roadmap({ roadmapData }) {
-  const [selectedYear, setSelectedYear] = useState('2024');
+export default function Roadmap({ roadmapData, onEditItem, onDeleteItem, yearConfig }) {
+  const [selectedYear, setSelectedYear] = useState('all');
   const [selectedQuarter, setSelectedQuarter] = useState('all');
+  const years = yearConfig?.years || [];
+
+  // 当年份配置变化时，重置选择
+  useEffect(() => {
+    setSelectedYear('all');
+  }, [yearConfig]);
 
   const filteredData = roadmapData.filter(item => {
     const itemYear = item.date.split(' ')[1];
@@ -28,7 +33,7 @@ export default function Roadmap({ roadmapData }) {
       <div className="flex flex-wrap items-center gap-4 mb-8">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">年份</label>
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap gap-2">
             <button 
               onClick={() => setSelectedYear('all')}
               className={`px-3 py-1 rounded-full text-sm ${
@@ -91,7 +96,9 @@ export default function Roadmap({ roadmapData }) {
             <RoadmapItem 
               key={index} 
               item={item} 
-              isLast={index === filteredData.length - 1} 
+              isLast={index === filteredData.length - 1}
+              onEdit={onEditItem}
+              onDelete={onDeleteItem}
             />
           ))
         ) : (

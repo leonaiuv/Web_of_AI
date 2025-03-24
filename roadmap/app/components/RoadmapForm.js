@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaPlus, FaTrash, FaSave, FaTimes, FaCheckCircle, FaCircle } from 'react-icons/fa';
 
-export default function RoadmapForm({ onAddItem }) {
+// 生成从当前年份开始的若干年范围
+const generateYears = (startYear = new Date().getFullYear(), count = 10) => {
+  return Array.from({ length: count }, (_, i) => (startYear + i).toString());
+};
+
+const years = generateYears(2024);
+const quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
+
+export default function RoadmapForm({ onAddItem, editItem, onUpdateItem, onCancelEdit, yearConfig }) {
   const initialFormState = {
     title: '',
     date: '',
@@ -12,6 +20,18 @@ export default function RoadmapForm({ onAddItem }) {
 
   const [formData, setFormData] = useState(initialFormState);
   const [taskInput, setTaskInput] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+
+  // 当editItem变化时更新表单数据
+  useEffect(() => {
+    if (editItem) {
+      setFormData(editItem);
+      setIsEditing(true);
+    } else {
+      setFormData(initialFormState);
+      setIsEditing(false);
+    }
+  }, [editItem]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +49,20 @@ export default function RoadmapForm({ onAddItem }) {
     setTaskInput('');
   };
 
+  const handleToggleTaskStatus = (index) => {
+    setFormData(prev => {
+      const updatedTasks = [...prev.tasks];
+      updatedTasks[index] = {
+        ...updatedTasks[index],
+        completed: !updatedTasks[index].completed
+      };
+      return {
+        ...prev,
+        tasks: updatedTasks
+      };
+    });
+  };
+
   const handleRemoveTask = (index) => {
     setFormData(prev => ({
       ...prev,
@@ -44,19 +78,31 @@ export default function RoadmapForm({ onAddItem }) {
       return;
     }
     
-    onAddItem(formData);
+    if (isEditing) {
+      onUpdateItem(formData);
+    } else {
+      onAddItem(formData);
+      setFormData(initialFormState);
+    }
+  };
+
+  const handleCancel = () => {
     setFormData(initialFormState);
+    setIsEditing(false);
+    onCancelEdit();
   };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 className="text-xl font-semibold mb-4">添加新的路线图项目</h2>
+      <h2 className="text-xl font-semibold mb-4">
+        {isEditing ? '编辑人生目标' : '添加新的人生目标'}
+      </h2>
       
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              标题 <span className="text-red-500">*</span>
+              目标名称 <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -65,12 +111,13 @@ export default function RoadmapForm({ onAddItem }) {
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               required
+              placeholder="如：学业规划、职业发展、财务目标"
             />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              日期 <span className="text-red-500">*</span>
+              计划时间 <span className="text-red-500">*</span>
             </label>
             <select
               name="date"
@@ -79,9 +126,9 @@ export default function RoadmapForm({ onAddItem }) {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               required
             >
-              <option value="">选择日期</option>
-              {['2024', '2025', '2026'].map(year => (
-                ['Q1', 'Q2', 'Q3', 'Q4'].map(quarter => (
+              <option value="">选择时间</option>
+              {years.map(year => (
+                quarters.map(quarter => (
                   <option key={`${quarter} ${year}`} value={`${quarter} ${year}`}>
                     {`${quarter} ${year}`}
                   </option>
@@ -93,7 +140,7 @@ export default function RoadmapForm({ onAddItem }) {
         
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            描述 <span className="text-red-500">*</span>
+            目标描述 <span className="text-red-500">*</span>
           </label>
           <textarea
             name="description"
@@ -102,12 +149,13 @@ export default function RoadmapForm({ onAddItem }) {
             rows="3"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             required
+            placeholder="描述你想要实现的目标、为什么这个目标对你重要以及达成这个目标的意义..."
           ></textarea>
         </div>
         
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            状态
+            目标状态
           </label>
           <select
             name="status"
@@ -115,16 +163,16 @@ export default function RoadmapForm({ onAddItem }) {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           >
-            <option value="pending">待办</option>
-            <option value="inProgress">进行中</option>
+            <option value="pending">尚未开始</option>
+            <option value="inProgress">正在进行</option>
             <option value="completed">已完成</option>
-            <option value="delayed">延迟</option>
+            <option value="delayed">已延期</option>
           </select>
         </div>
         
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            任务列表
+            具体行动步骤
           </label>
           <div className="flex">
             <input
@@ -132,7 +180,7 @@ export default function RoadmapForm({ onAddItem }) {
               value={taskInput}
               onChange={(e) => setTaskInput(e.target.value)}
               className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="添加任务"
+              placeholder="添加实现目标的具体步骤"
             />
             <button
               type="button"
@@ -147,7 +195,20 @@ export default function RoadmapForm({ onAddItem }) {
             <div className="mt-2 space-y-2">
               {formData.tasks.map((task, index) => (
                 <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded">
-                  <span>{task.text}</span>
+                  <div className="flex items-center">
+                    <button
+                      type="button"
+                      onClick={() => handleToggleTaskStatus(index)}
+                      className={`mr-2 ${task.completed ? 'text-green-500' : 'text-gray-300'}`}
+                    >
+                      {task.completed ? (
+                        <FaCheckCircle size={14} />
+                      ) : (
+                        <FaCircle size={14} />
+                      )}
+                    </button>
+                    <span className={task.completed ? 'line-through text-gray-500' : ''}>{task.text}</span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => handleRemoveTask(index)}
@@ -161,12 +222,29 @@ export default function RoadmapForm({ onAddItem }) {
           )}
         </div>
         
-        <div className="flex justify-end">
+        <div className="flex justify-end space-x-2">
+          {isEditing && (
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 flex items-center"
+            >
+              <FaTimes className="mr-1" /> 取消
+            </button>
+          )}
           <button
             type="submit"
-            className="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center"
           >
-            添加路线图项目
+            {isEditing ? (
+              <>
+                <FaSave className="mr-1" /> 保存目标
+              </>
+            ) : (
+              <>
+                <FaPlus className="mr-1" /> 添加人生目标
+              </>
+            )}
           </button>
         </div>
       </form>
