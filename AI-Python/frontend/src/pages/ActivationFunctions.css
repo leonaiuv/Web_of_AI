@@ -1,0 +1,93 @@
+.activation-functions-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  margin-bottom: 12px !important;
+  position: relative;
+  display: inline-block;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #1890ff, #722ed1);
+  border-radius: 3px;
+}
+
+.page-description {
+  font-size: 16px;
+  margin-bottom: 32px !important;
+}
+
+.activation-tabs {
+  margin-bottom: 40px;
+}
+
+.activation-card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.chart-container {
+  height: 300px;
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.function-details {
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.formula {
+  margin-bottom: 16px;
+}
+
+.formula-text {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: block;
+  margin-top: 8px;
+}
+
+.description {
+  margin-bottom: 16px;
+}
+
+.code-example {
+  margin-top: 16px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
+.summary-card {
+  margin-top: 40px;
+  background-color: #f0f7ff;
+}
+
+.summary-list {
+  margin-top: 16px;
+  padding-left: 24px;
+}
+
+.summary-list li {
+  margin-bottom: 12px;
+} 
